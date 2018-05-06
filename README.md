@@ -1,2 +1,2 @@
 # notebook
-tensorflow-notebook with some NLP tools
+tensorflow-notebook with NLP tools

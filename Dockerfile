@@ -31,16 +31,21 @@ RUN cd cabocha/python && \
 RUN rm -rf crf++ cabocha
 RUN ldconfig
 
-RUN cd && git clone https://github.com/facebookresearch/fastText.git
+RUN git clone https://github.com/facebookresearch/fastText.git
 RUN cd fastText && make
-RUN cp fasttext /usr/local/bin
+RUN cp fastText/fasttext /usr/local/bin
 
 USER $NB_USER
 
 RUN pip install -U pip
+RUN pip install 'tensorflow-tensorboard<0.2.0,>=0.1.0'
 RUN pip install mecab-python3
 RUN pip install pymc3
 RUN pip install keras
 RUN pip install graphviz pydot
-RUN cd ~/fastText && pip install .
-RUN cd && rm -rf fastText
+RUN pip install pybind11
+RUN cd fastText && pip install .
+
+USER root
+RUN rm -rf fastText
+USER $NB_USER
