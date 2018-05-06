@@ -7,7 +7,7 @@ RUN apt-get install -y --no-install-recommends \
     mecab \
     libmecab-dev \
     mecab-ipadic-utf8
-RUN apt-get install -y curl file p7zip
+RUN apt-get install -y curl file p7zip-full
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -17,7 +17,7 @@ RUN rm -rf mecab-ipadic-neologd
 
 RUN curl -sSLO https://github.com/tsmd44/notebook/raw/master/crf++.7z
 RUN curl -sSLO https://github.com/tsmd44/notebook/raw/master/cabocha.7z
-RUN p7zip -d crf++.7z && p7zip -d cabocha.7z
+RUN 7z x crf++.7z && 7z x cabocha.7z
 RUN cd crf++ && ./configure && make && make install
 RUN echo "/usr/local/lib" >> /etc/ld.so.conf.d/lib.conf && ldconfig
 RUN cd cabocha && \
