@@ -7,7 +7,7 @@ RUN apt-get install -y --no-install-recommends \
     mecab \
     libmecab-dev \
     mecab-ipadic-utf8
-RUN apt-get install -y curl file p7zip-full
+RUN apt-get install -y curl file p7zip-full graphviz
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -28,7 +28,7 @@ RUN cd cabocha && \
 RUN cd cabocha/python && \
     python2 setup.py install && \
     python3 setup.py install
-RUN rm -rf crf++ cabocha
+RUN rm -rf crf++ cabocha crf++.7z cabocha.7z
 RUN ldconfig
 
 RUN git clone https://github.com/facebookresearch/fastText.git
@@ -38,7 +38,6 @@ RUN cp fastText/fasttext /usr/local/bin
 USER $NB_USER
 
 RUN pip install -U pip
-RUN pip install 'tensorflow-tensorboard<0.2.0,>=0.1.0'
 RUN pip install mecab-python3
 RUN pip install pymc3
 RUN pip install keras
