@@ -8,7 +8,7 @@ RUN apt-get install -y --no-install-recommends \
     libmecab-dev \
     mecab-ipadic-utf8
 RUN apt-get install -y curl file p7zip-full graphviz
-RUN apt-get install mysql-client libmysqlclient-dev
+RUN apt-get install -y mysql-client libmysqlclient-dev
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -44,7 +44,7 @@ RUN pip install pymc3
 RUN pip install keras
 RUN pip install graphviz pydot
 RUN pip install pybind11
-RUN pip install emoji music21
+RUN pip install emoji music21 gensim
 RUN pip install mysqlclient psycopg2
 RUN cd fastText && pip install .
 
