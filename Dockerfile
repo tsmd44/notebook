@@ -41,11 +41,12 @@ USER $NB_USER
 RUN pip install -U pip
 RUN pip install mecab-python3
 RUN pip install pymc3
-RUN pip install keras
 RUN pip install graphviz pydot
 RUN pip install pybind11
 RUN pip install emoji music21 gensim
 RUN pip install mysqlclient psycopg2
+RUN pip install http://download.pytorch.org/whl/cpu/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
+RUN pip install torchvision
 RUN cd fastText && pip install .
 
 USER root
