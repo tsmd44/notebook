@@ -53,7 +53,8 @@ RUN git clone https://github.com/facebookresearch/fastText.git && \
     cp fasttext /usr/local/bin && \
     pip install --no-cache-dir . && \
     cd && \
-    rm -rf fastText
+    rm -rf fastText && \
+    chown -R $NB_USER .local
 
 USER $NB_USER
 
@@ -77,5 +78,3 @@ RUN pip install --no-cache-dir \
     http://download.pytorch.org/whl/cpu/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
 
 RUN jupyter notebook --generate-config
-
-USER $NB_USER
