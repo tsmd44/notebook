@@ -14,6 +14,7 @@ RUN apt-get update && \
     graphviz \
     mysql-client \
     libmysqlclient-dev && \
+    vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -64,6 +65,8 @@ RUN pip install --no-cache-dir \
     psycopg2 \
     graphviz \
     pydot \
+    holoviews \
+    plotly \
     faker \
     opencv-python \
     mecab-python3 \
