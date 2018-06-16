@@ -13,7 +13,7 @@ RUN apt-get update && \
     p7zip-full \
     graphviz \
     mysql-client \
-    libmysqlclient-dev && \
+    libmysqlclient-dev \
     vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -48,6 +48,13 @@ RUN curl -sSLO https://github.com/tsmd44/notebook/raw/master/cabocha.7z && \
     rm -rf cabocha cabocha.7z && \
     ldconfig
 
+RUN curl -sSLO https://oscdl.ipa.go.jp/IPAexfont/ipaexg00301.zip && \
+    7z x ipaexg00301.zip && \
+    mkdir .fonts && \
+    mv ipaexg00301/ipaexg.ttf .fonts/ && \
+    rm -rf ipaexg00301.zip ipaexg00301 && \
+    sed -ie "s/^#font.family.*/font.family : IPAexGothic/" /opt/conda/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
+
 RUN git clone https://github.com/facebookresearch/fastText.git && \
     cd fastText && \
     make && \
@@ -66,7 +73,6 @@ RUN pip install --no-cache-dir \
     graphviz \
     pydot \
     holoviews \
-    plotly \
     faker \
     opencv-python \
     mecab-python3 \
