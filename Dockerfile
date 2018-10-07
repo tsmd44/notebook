@@ -88,4 +88,4 @@ RUN pip install --no-cache-dir \
     torchvision \
     http://download.pytorch.org/whl/cpu/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
 
-RUN jupyter notebook --generate-config
+RUN jupyter notebook --generate-config -y
