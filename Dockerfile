@@ -52,7 +52,7 @@ RUN curl -sSLO https://oscdl.ipa.go.jp/IPAexfont/ipaexg00301.zip && \
     7z x ipaexg00301.zip && \
     mkdir .fonts && \
     mv ipaexg00301/ipaexg.ttf .fonts/ && \
-    rm -rf ipaexg00301.zip ipaexg00301 && \
+    rm -rf ipaexg00301.zip ipaexg00301 .cache/matplotlib && \
     sed -ie "s/^#font.family.*/font.family : IPAexGothic/" /opt/conda/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
 
 RUN git clone https://github.com/facebookresearch/fastText.git && \
@@ -70,10 +70,12 @@ RUN pip install --no-cache-dir -U pip
 RUN pip install --no-cache-dir \
     mysqlclient \
     psycopg2 \
+    ipython-sql \
     graphviz \
     pydot \
     holoviews \
     faker \
+    featuretools \
     opencv-python \
     mecab-python3 \
     emoji \
